@@ -1,0 +1,9 @@
+# SERVER CONFIGURATION
+server: 
+ port: 1230
+ contextPath: /deploy 
+ 
+# MANAGEMENT HTTP SERVER 
+management:
+ port: 1231
+ contextPath: /admin
