@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 import com.stfciz.aws.deploy.AwsDeployerMessage;
 
 @Component
-public class AwsDeployerMessageCmdLineProcessorImpl implements
-    AwsDeployerMessageProcessor {
+public class AwsDeployerMessageCmdLineProcessorImpl implements AwsDeployerMessageProcessor {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AwsDeployerMessageProcessor.class);
   

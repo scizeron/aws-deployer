@@ -25,6 +25,8 @@ public class AwsDeployerMessage {
 
   private String bucketName;
   
+  private String role;
+  
   public String getEnv() {
     return env;
   }
@@ -79,5 +81,13 @@ public class AwsDeployerMessage {
 
   public void setBucketName(String bucketName) {
     this.bucketName = bucketName;
+  }
+
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
   }
 }

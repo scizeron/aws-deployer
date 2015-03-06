@@ -14,6 +14,8 @@
 		<aws-context:simple-credentials access-key="${aws.accessKey}" secret-key="${aws.secretKey}"/>
 	</aws-context:context-credentials>
 	
+	<aws-context:context-instance-data user-tags-map="instanceData" />
+	
 	<aws-messaging:annotation-driven-queue-listener/>
 			
 	<aws-messaging:queue-messaging-template id="queueMessagingTemplate" />

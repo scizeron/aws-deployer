@@ -18,6 +18,9 @@ public class AwsDeployReceiverImpl implements AwsDeployReceiver {
   
   @Autowired
   private AwsDeployerMessageProcessor messageProcessor;
+  
+  @Autowired
+  private AwsDeployMessageFilter messageFilter;
     
   /* (non-Javadoc)
    * @see com.stfciz.aws.deploy.service.AwsDeployReceiver#listen(com.stfciz.aws.deploy.AwsDeployerMessage)
@@ -28,6 +31,11 @@ public class AwsDeployReceiverImpl implements AwsDeployReceiver {
     if (LOGGER.isDebugEnabled()) {
       LOGGER.debug("Receive : {}",  this.debug.writeValueAsString(message));
     }
-    this.messageProcessor.process(message);
+    
+    if (this.messageFilter.accept(message)) {
+      this.messageProcessor.process(message);  
+    } else {
+      LOGGER.debug("Message rejected");
+    }
   }
 }
