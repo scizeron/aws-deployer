@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stfciz.aws.deploy.AwsDeployerMessage;
 
+/**
+ * 
+ * @author stfciz
+ *
+ */
 @Component
 public class AwsDeployReceiverImpl implements AwsDeployReceiver {
 
@@ -22,9 +27,6 @@ public class AwsDeployReceiverImpl implements AwsDeployReceiver {
   @Autowired
   private AwsDeployMessageFilter messageFilter;
     
-  /* (non-Javadoc)
-   * @see com.stfciz.aws.deploy.service.AwsDeployReceiver#listen(com.stfciz.aws.deploy.AwsDeployerMessage)
-   */
   @Override
   @MessageMapping(AwsDeployerConstants.QUEUE_NAME)
   public void listen(AwsDeployerMessage message) throws Exception {

@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 
 import com.stfciz.aws.deploy.AwsDeployerMessage;
 
+/**
+ * 
+ * @author stfciz
+ *
+ */
 @Component
 public class AwsDeploySenderImpl implements AwsDeploySender {
 

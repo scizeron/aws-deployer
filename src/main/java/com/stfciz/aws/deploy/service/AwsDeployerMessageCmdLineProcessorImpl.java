@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 
 import com.stfciz.aws.deploy.AwsDeployerMessage;
 
+/**
+ * 
+ * @author stfciz
+ *
+ */
 @Component
 public class AwsDeployerMessageCmdLineProcessorImpl implements AwsDeployerMessageProcessor {
 
@@ -13,29 +18,10 @@ public class AwsDeployerMessageCmdLineProcessorImpl implements AwsDeployerMessag
   
   @Override
   public void process(AwsDeployerMessage message) throws Exception {
-    final String action = message.getAction();
-
+    String command = AwsDeployerMessageCmdLineConverter.convert(message);
+    LOGGER.debug("process : {}", command);
     Runtime runtime = Runtime.getRuntime();
-    StringBuilder command = new StringBuilder();
-    
-    command.append("sh").append(" ");
-    command.append(message.getRootDirectory()).append("/bin/admin.sh").append(" ");
-    command.append(action).append(" ");
-        
-    if ("config".equals(action) || "install".equals(action)) {
-      command.append("-s3b").append(" ").append(message.getBucketName());
-      command.append("-cv").append(" ").append(message.getVersion()).append(" ");
-      command.append("-ci").append(" ").append(message.getArtifactId()).append(" ");
-      command.append("-cg").append(" ").append(message.getGroupId()).append(" ");
-    }
-    
-    if ("install".equals(action)) {
-      command.append("-av").append(" ").append(message.getVersion()).append(" ");
-      command.append("-ai").append(" ").append(message.getArtifactId()).append(" ");
-      command.append("-ag").append(" ").append(message.getGroupId());      
-    }
-    
-    Process exec = runtime.exec(command.toString());
+    Process exec = runtime.exec(command);
     int exitVal = exec.waitFor();
     
     if (exitVal > 0) {

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * 
- * @author Bellevue
+ * @author stfciz
  *
  */
 @JsonInclude(Include.NON_NULL)
