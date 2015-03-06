@@ -12,14 +12,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class AwsDeployerMessage {
   
   private String rootDirectory;
-  
-  public String getRootDirectory() {
-    return rootDirectory;
-  }
-
-  public void setRootDirectory(String rootDirectory) {
-    this.rootDirectory = rootDirectory;
-  }
 
   private String groupId;
   
@@ -28,6 +20,18 @@ public class AwsDeployerMessage {
   private String version;
 
   private String action;
+  
+  private String env;
+
+  private String bucketName;
+  
+  public String getEnv() {
+    return env;
+  }
+
+  public void setEnv(String env) {
+    this.env = env;
+  }
 
   public String getGroupId() {
     return groupId;
@@ -59,5 +63,21 @@ public class AwsDeployerMessage {
 
   public void setAction(String action) {
     this.action = action;
+  }
+  
+  public String getRootDirectory() {
+    return rootDirectory;
+  }
+
+  public void setRootDirectory(String rootDirectory) {
+    this.rootDirectory = rootDirectory;
+  }
+
+  public String getBucketName() {
+    return bucketName;
+  }
+
+  public void setBucketName(String bucketName) {
+    this.bucketName = bucketName;
   }
 }
