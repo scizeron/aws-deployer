@@ -7,16 +7,15 @@
 		http://www.springframework.org/schema/cloud/aws/messaging http://www.springframework.org/schema/cloud/aws/messaging/spring-cloud-aws-messaging-1.0.xsd">
 
 <!--   <aws-context:context-region auto-detect="true" /> -->
-
-	<aws-context:context-region region="eu-west-1" />
-
+  <aws-context:context-region region="eu-west-1"/>
+  
 	<aws-context:context-credentials>
 		<aws-context:instance-profile-credentials />
-		<aws-context:simple-credentials access-key="${accessKey:}" secret-key="${secretKey:}"/>
+		<aws-context:simple-credentials access-key="${aws.accessKey}" secret-key="${aws.secretKey}"/>
 	</aws-context:context-credentials>
 	
-	<aws-messaging:annotation-driven-queue-listener />
-	
-	<aws-messaging:queue-messaging-template id="queueMessagingTemplate"/>
+	<aws-messaging:annotation-driven-queue-listener/>
+			
+	<aws-messaging:queue-messaging-template id="queueMessagingTemplate" />
 	
 </beans>

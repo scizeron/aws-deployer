@@ -1,10 +1,14 @@
 package com.stfciz.aws.deploy;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * 
  * @author Bellevue
  *
  */
+@JsonInclude(Include.NON_NULL)
 public class AwsDeployerMessage {
   
   private String rootDirectory;

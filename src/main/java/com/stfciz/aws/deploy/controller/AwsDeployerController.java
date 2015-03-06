@@ -23,5 +23,4 @@ public class AwsDeployerController {
   public void send(@RequestBody AwsDeployerMessage message) {
    this.sender.send(message);
   }
-
 }

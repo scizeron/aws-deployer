@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
 import org.springframework.stereotype.Component;
 
-import com.stfciz.aws.deploy.AwsDeployConstants;
 import com.stfciz.aws.deploy.AwsDeployerMessage;
 
 @Component
-public class AwsDeploySenderImpl implements AwsDeployConstants, AwsDeploySender {
+public class AwsDeploySenderImpl implements AwsDeploySender {
 
   @Autowired
   private QueueMessagingTemplate queueMessagingTemplate;
@@ -18,6 +17,6 @@ public class AwsDeploySenderImpl implements AwsDeployConstants, AwsDeploySender 
    */
   @Override
   public void send(AwsDeployerMessage message) {
-    this.queueMessagingTemplate.convertAndSend(QUEUE_NAME, message);
+    this.queueMessagingTemplate.convertAndSend(AwsDeployerConstants.QUEUE_NAME, message);
   }
 }
