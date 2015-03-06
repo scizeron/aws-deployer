@@ -27,7 +27,12 @@ public class AwsDeployMessageFilterImpl implements AwsDeployMessageFilter {
      return false;     
    }
    
-   return this.myRole.equals(message.getRole());
+   boolean accept = this.myRole.equals(message.getRole());
+
+   if (!accept) {
+     LOGGER.debug("The 'myRole' tag : {} <> {}", this.myRole, message.getRole());
+   }
+   return accept;
   }
 
 }

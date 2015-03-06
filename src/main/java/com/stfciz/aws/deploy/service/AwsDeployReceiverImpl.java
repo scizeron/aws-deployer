@@ -35,7 +35,7 @@ public class AwsDeployReceiverImpl implements AwsDeployReceiver {
     if (this.messageFilter.accept(message)) {
       this.messageProcessor.process(message);  
     } else {
-      LOGGER.debug("Message rejected");
+      throw new IllegalArgumentException("The message is rejected");
     }
   }
 }
