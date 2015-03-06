@@ -1,4 +1,4 @@
-package com.stfciz.aws.deploy.service;
+package com.stfciz.aws.deploy.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.stfciz.aws.deploy.AwsDeployerMessage;
+import com.stfciz.aws.deploy.service.MessageFilter;
 
 /**
  * 
@@ -13,10 +14,10 @@ import com.stfciz.aws.deploy.AwsDeployerMessage;
  *
  */
 @Component
-public class AwsDeployMessageFilterImpl implements AwsDeployMessageFilter {
+public class MessageFilterImpl implements MessageFilter {
 
   private static final Logger LOGGER = LoggerFactory
-      .getLogger(AwsDeployMessageFilter.class);
+      .getLogger(MessageFilter.class);
 
   @Value("#{instanceData.myRole}")
   private String myRole;

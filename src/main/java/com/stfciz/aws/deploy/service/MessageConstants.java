@@ -5,7 +5,7 @@ package com.stfciz.aws.deploy.service;
  * @author stfciz
  *
  */
-public interface AwsDeployerConstants {
+public interface MessageConstants {
 
   String QUEUE_NAME = "AppsDeploymentQueue";
 }

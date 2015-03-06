@@ -7,13 +7,12 @@ import com.stfciz.aws.deploy.AwsDeployerMessage;
  * @author stfciz
  *
  */
-public interface AwsDeployReceiver {
+public interface Sender {
 
   /**
    * 
    * @param message
-   * @throws Exception
    */
-  void listen(AwsDeployerMessage message) throws Exception;
+  void send(AwsDeployerMessage message);
 
 }

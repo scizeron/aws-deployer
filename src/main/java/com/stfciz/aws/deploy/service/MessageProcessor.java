@@ -7,12 +7,12 @@ import com.stfciz.aws.deploy.AwsDeployerMessage;
  * @author stfciz
  *
  */
-public interface AwsDeploySender {
+public interface MessageProcessor {
 
   /**
    * 
    * @param message
+   * @throws Exception
    */
-  void send(AwsDeployerMessage message);
-
+  void process(AwsDeployerMessage message) throws Exception;
 }

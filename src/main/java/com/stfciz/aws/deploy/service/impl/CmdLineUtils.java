@@ -1,4 +1,9 @@
-package com.stfciz.aws.deploy.service;
+package com.stfciz.aws.deploy.service.impl;
+
+import java.util.Arrays;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.stfciz.aws.deploy.AwsDeployerMessage;
 
@@ -7,14 +12,16 @@ import com.stfciz.aws.deploy.AwsDeployerMessage;
  * @author stfciz
  *
  */
-public final class AwsDeployerMessageCmdLineConverter {
+public final class CmdLineUtils {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(CmdLineUtils.class);
+  
   private static final String SHELL_SCRIPT = "/bin/admin.sh";
 
   /**
    * 
    */
-  private AwsDeployerMessageCmdLineConverter() {
+  private CmdLineUtils() {
     /** EMPTY **/
   }
   
@@ -46,6 +53,28 @@ public final class AwsDeployerMessageCmdLineConverter {
     }
     
     return command.toString();
+  }
+  
+  /**
+   * 
+   * @param command
+   * @return
+   * @throws Exception
+   */
+  public static boolean process(String... command) throws Exception {
+    String cmdToString = Arrays.toString(command);
+    LOGGER.debug("process : {}", cmdToString);
+    ProcessBuilder pb = new ProcessBuilder(command);
+    
+    Process process = pb.start();
+    int exitVal = process.waitFor();
+    boolean ok = (exitVal == 0);
+    if (ok) {
+      LOGGER.debug("{} returns {}", cmdToString, exitVal);
+    } else {
+      LOGGER.error("{} returns {}", cmdToString, exitVal);
+    }
+    return ok;
   }
   
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stfciz.aws.deploy.AwsDeployerMessage;
-import com.stfciz.aws.deploy.service.AwsDeploySender;
+import com.stfciz.aws.deploy.service.Sender;
 /**
  * 
  * @author stfciz
@@ -20,7 +20,7 @@ import com.stfciz.aws.deploy.service.AwsDeploySender;
 public class AwsDeployerController {
 
   @Autowired
-  private AwsDeploySender sender;
+  private Sender sender;
   
   @RequestMapping(value="/send", method={RequestMethod.POST}, consumes={MediaType.APPLICATION_JSON_VALUE})
   @ResponseStatus(value=HttpStatus.OK)
