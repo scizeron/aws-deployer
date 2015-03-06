@@ -16,7 +16,7 @@
 	
 	<aws-context:context-instance-data user-tags-map="instanceData" />
 	
-	<aws-messaging:annotation-driven-queue-listener/>
+	<aws-messaging:annotation-driven-queue-listener delete-message-on-exception="false"/>
 			
 	<aws-messaging:queue-messaging-template id="queueMessagingTemplate" />
 	
